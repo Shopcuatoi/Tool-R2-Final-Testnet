@@ -1,3 +1,11 @@
+
+process.removeAllListeners('warning');
+process.on('warning', (e) => {
+  if (e.name !== 'DeprecationWarning') {
+    console.warn(e.stack);
+  }
+});
+
 const fs = require('fs').promises;
 const ethers = require('ethers');
 const axios = require('axios');
